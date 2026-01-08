@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartHire Project | Tarj Kothari</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- PASTE THIS IN YOUR <STYLE> SECTION --- */
+
+        /* 1. Smooth Scrolling for the whole page */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* 2. Professional "Fade In" Animation State (Hidden initially) */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            /* Starts slightly lower */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        /* 3. The "Visible" State (Triggered by JS) */
+        .is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 4. Attractive Card Hover Effects (The "Micro-interaction") */
+        .card {
+            transition: all 0.3s ease;
+            /* Smooth transition for hover */
+            border: none;
+            /* Cleaner look */
+            overflow: hidden;
+            /* Keeps images inside rounded corners */
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            /* Moves up slightly */
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.2);
+            /* Blue glow shadow */
+        }
+
+        /* 5. Button Hover Pulse */
+        .btn {
+            transition: transform 0.2s;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+            /* Click effect */
+        }
+
+        /* 6. Image Hover Zoom (For your project screenshots) */
+        .screenshot-frame img,
+        .img-placeholder img {
+            transition: transform 0.5s ease;
+        }
+
+        .screenshot-frame:hover img,
+        .img-placeholder:hover img {
+            transform: scale(1.03);
+            /* Subtle zoom on hover */
+        }
+
+        /* It should look like this (Clean Version) */
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .module-header {
+            background: #343a40;
+            color: white;
+            padding: 40px 0;
+        }
+
+        .screenshot-frame {
+            border: 1px solid #ddd;
+            padding: 10px;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        body {
+            background-color: #f8fafc;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .project-header {
+            background: #2563eb;
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+
+        .img-placeholder {
+            background: #ddd;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 2px dashed #999;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="project-header text-center">
+        <div class="container">
+            <h1 class="fw-bold">SmartHire</h1>
+            <p class="lead">AI-Powered Job Portal & Resume Ranking System</p>
+            <a href="index.html" class="btn btn-outline-light mt-3"><i class="fas fa-arrow-left"></i> Back to
+                Portfolio</a>
+        </div>
+    </header>
+
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h4 class="mb-3">Project Info</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><strong>Role:</strong> Team Leader</li>
+                            <li class="mb-2"><strong>Tech Stack:</strong> TypeScript, HTML, CSS, JavaScript
+                            </li>
+                            <li class="mb-2"><strong>Team Size:</strong> 3 Members</li>
+                            <li class="mb-2"><strong>Status:</strong> Under Progress</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <h3>About the Project</h3>
+                <p>SmartHire is an innovative recruitment platform designed to solve the inefficiency of manual resume
+                    screening. Similar to major job boards like Naukri.com, it allows job providers to list vacancies,
+                    but adds a layer of AI intelligence.</p>
+
+                <h5 class="mt-4">Key Features</h5>
+                <ul>
+                    <li><strong>AI Resume Ranking:</strong> The system analyzes candidate resumes against the job
+                        description. </li>
+                    <li><strong>Validity Scoring:</strong> Recruiters receive a "hire validity" score to instantly gauge
+                        candidate fit.</li>
+                    <li><strong>Job Listing Management:</strong> seamless interface for posting and managing job
+                        openings.</li>
+                </ul>
+
+                <h3 class="mt-5 mb-3">Project Gallery</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="img-placeholder">
+                            <img src="smart_hire-login.png" alt="Upload Login Screen Screenshot Here" height="100%"
+                                width="100%">
+
+                        </div>
+                    </div>
+                    <div class="row text-center mb-5">
+                        <div class="col-md-4">
+                            <a href="smarthire-admin.html" class="btn btn-dark w-100 py-3"><i
+                                    class="fas fa-user-shield me-2"></i> View Admin Module</a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="smarthire-seeker.html" class="btn btn-primary w-100 py-3"><i
+                                    class="fas fa-user-graduate me-2"></i> View Job Seeker Module</a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="smarthire-provider.html" class="btn btn-success w-100 py-3"><i
+                                    class="fas fa-briefcase me-2"></i> View Job Provider Module</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2026 Tarj Kothari</p>
+    </footer>
+    <script>
+        // 1. Setup the "Observer" (The Camera Director)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the item is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Stop watching once animated
+                }
+            });
+        }, observerOptions);
+
+        // 2. Select elements to animate
+        document.addEventListener("DOMContentLoaded", function () {
+            // We target cards, headers, titles, and images
+            const elements = document.querySelectorAll('.card, .hero, .project-header, .module-header, .section-title, .screenshot-frame, img, h1, h2, h3');
+
+            elements.forEach((el, index) => {
+                el.classList.add('animate-on-scroll');
+
+                // Add a tiny delay for items in the same row (stagger effect)
+                if (index % 3 === 0) el.style.transitionDelay = "0ms";
+                if (index % 3 === 1) el.style.transitionDelay = "200ms"; // 2nd item waits
+                if (index % 3 === 2) el.style.transitionDelay = "400ms"; // 3rd item waits
+
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+
+</html>

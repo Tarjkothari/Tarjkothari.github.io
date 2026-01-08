@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarj Kothari | Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- PASTE THIS IN YOUR <STYLE> SECTION --- */
+
+        /* 1. Smooth Scrolling for the whole page */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* 2. Professional "Fade In" Animation State (Hidden initially) */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            /* Starts slightly lower */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        /* 3. The "Visible" State (Triggered by JS) */
+        .is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 4. Attractive Card Hover Effects (The "Micro-interaction") */
+        .card {
+            transition: all 0.3s ease;
+            /* Smooth transition for hover */
+            border: none;
+            /* Cleaner look */
+            overflow: hidden;
+            /* Keeps images inside rounded corners */
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            /* Moves up slightly */
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.2);
+            /* Blue glow shadow */
+        }
+
+        /* 5. Button Hover Pulse */
+        .btn {
+            transition: transform 0.2s;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+            /* Click effect */
+        }
+
+        /* 6. Image Hover Zoom (For your project screenshots) */
+        .screenshot-frame img,
+        .img-placeholder img {
+            transition: transform 0.5s ease;
+        }
+
+        .screenshot-frame:hover img,
+        .img-placeholder:hover img {
+            transform: scale(1.03);
+            /* Subtle zoom on hover */
+        }
+
+        /* It should look like this (Clean Version) */
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .module-header {
+            background: #343a40;
+            color: white;
+            padding: 40px 0;
+        }
+
+        .screenshot-frame {
+            border: 1px solid #ddd;
+            padding: 10px;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e293b;
+            --bg-light: #f8fafc;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+
+        /* Navbar */
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+        }
+
+        .nav-link {
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(37, 99, 235, 0.9), rgba(30, 41, 59, 0.9)), url('https://source.unsplash.com/random/1920x1080/?technology');
+            background-size: cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            opacity: 0.9;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Skills Badges */
+        .skill-badge {
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 50px;
+        }
+
+        /* Experience Timeline */
+        .timeline-item {
+            border-left: 3px solid var(--primary-color);
+            padding-left: 20px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            width: 15px;
+            height: 15px;
+            background: var(--primary-color);
+            position: absolute;
+            left: -9px;
+            top: 5px;
+            border-radius: 50%;
+        }
+
+        /* Projects */
+        .project-card {
+            transition: transform 0.3s;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Contact */
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="70">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="#">TARJ KOTHARI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="container">
+            <h1>Hi, I'm Tarj Kothari</h1>
+            <p>Full Stack Developer | PHP & Laravel Enthusiast | AI Innovator</p>
+            <div class="mt-4">
+                <a href="#projects" class="btn btn-primary btn-lg me-2">View My Work</a>
+                <a href="#contact" class="btn btn-outline-light btn-lg">Contact Me</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <p class="lead text-muted">
+                        I am a Computer Engineering student at <strong>Kadi Sarva Vishwavidyalaya</strong>
+                        with a passion for building scalable web applications.
+                        With a strong foundation in <strong>PHP, Laravel, and Java</strong>[cite: 8], I aim to secure an
+                        innovative position in software development.
+                        My goal is to contribute my best towards organizational success through clean code and modern
+                        solutions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="bg-light">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="text-center">
+                <h5 class="mt-4">Programming Languages</h5>
+                <span class="badge bg-primary skill-badge">PHP</span>
+                <span class="badge bg-primary skill-badge">Java</span>
+                <span class="badge bg-primary skill-badge">Python</span>
+                <span class="badge bg-primary skill-badge">C/C++</span>
+                <span class="badge bg-primary skill-badge">JavaScript</span>
+                <span class="badge bg-primary skill-badge">TypeScript</span>
+
+                <h5 class="mt-4">Frameworks & Tools</h5>
+                <span class="badge bg-dark skill-badge">Laravel</span>
+                <span class="badge bg-dark skill-badge">Bootstrap</span>
+                <span class="badge bg-dark skill-badge">MySQL</span>
+                <span class="badge bg-dark skill-badge">Git / GitHub</span>
+                <span class="badge bg-dark skill-badge">VS Code</span>
+                <span class="badge bg-dark skill-badge">RESTful APIs</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="timeline-item">
+                        <h4>PHP-Laravel Intern</h4>
+                        <h6 class="text-primary">Skyway IT Solutions, Gandhinagar</h6>
+                        <small class="text-muted"><i class="far fa-calendar-alt"></i> July 2025 - August 2025</small>
+                        <ul class="mt-2">
+                            <li>Developed and maintained client websites using the Laravel framework.</li>
+                            <li>Implemented new features based on client specifications, improving website
+                                performance.</li>
+                            <li>Assisted senior developers in troubleshooting bugs and QA checks before deployment.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="bg-light">
+        <div class="container">
+            <h2 class="section-title">Key Projects</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card project-card">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">SmartHire (AI Job Portal)</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">TypeScript, HTML, CSS</h6>
+                            <p class="card-text flex-grow-1">
+                                An AI-powered recruitment platform with automated resume ranking and valid-to-hire
+                                scoring.
+                            </p>
+                            <a href="smarthire.html" class="btn btn-primary mt-3">View Project Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card project-card">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">EnergizeMe</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">PHP, Bootstrap, MySQL</h6>
+                            <p class="card-text flex-grow-1">
+                                A wellness platform integrating fitness tracking, mental health resources, and
+                                nutrition.
+                            </p>
+                            <a href="energizeme.html" class="btn btn-primary mt-3">View Project Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card project-card">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Online Sports Shop</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">PHP, HTML, CSS</h6>
+                            <p class="card-text flex-grow-1">
+                                A dedicated e-commerce portal for sports equipment with product management.
+                            </p>
+                            <a href="sports-shop.html" class="btn btn-primary mt-3">View Project Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="row text-center">
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h4>B.E. (Computer)</h4>
+                            <p class="text-muted">Kadi Sarva Vishwavidyalaya</p>
+                            <h3>7.34 CPI</h3>
+                            <small>2023 - 2026</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h4>Diploma in Computer Eng.</h4>
+                            <p class="text-muted">Gujarat Technological University</p>
+                            <h3>8.72 CGPA</h3>
+                            <small>2020 - 2023</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="bg-dark text-white">
+        <div class="container text-center">
+            <h2 class="section-title text-white">Contact Me</h2>
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-4">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <h5>Phone</h5>
+                    <p>+91 9724501570 </p>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <h5>Email</h5>
+                    <p>tarikothari2004@gmail.com</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h5>Location</h5>
+                    <p>Ahmedabad, Gandhinagar, Bhavnagar</p>
+                </div>
+            </div>
+            <div class="mt-5">
+                <a href="mailto:tarikothari2004@gmail.com" class="btn btn-primary btn-lg">Send Me an Email</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="mb-3">
+                <a href="https://www.linkedin.com/in/tarjkothari" class="text-white mx-3 fs-4" target="_blank"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Tarikothari" class="text-white mx-3 fs-4" target="_blank"><i
+                        class="fab fa-github"></i></a>
+            </div>
+            <p>&copy; 2026 Tarj Kothari. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+        // 1. Setup the "Observer" (The Camera Director)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the item is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Stop watching once animated
+                }
+            });
+        }, observerOptions);
+
+        // 2. Select elements to animate
+        document.addEventListener("DOMContentLoaded", function () {
+            // We target cards, headers, titles, and images
+            const elements = document.querySelectorAll('.card, .hero, .project-header, .module-header, .section-title, .screenshot-frame, img, h1, h2, h3');
+
+            elements.forEach((el, index) => {
+                el.classList.add('animate-on-scroll');
+
+                // Add a tiny delay for items in the same row (stagger effect)
+                if (index % 3 === 0) el.style.transitionDelay = "0ms";
+                if (index % 3 === 1) el.style.transitionDelay = "200ms"; // 2nd item waits
+                if (index % 3 === 2) el.style.transitionDelay = "400ms"; // 3rd item waits
+
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartHire - Admin Module</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- PASTE THIS IN YOUR <STYLE> SECTION --- */
+
+        /* 1. Smooth Scrolling for the whole page */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* 2. Professional "Fade In" Animation State (Hidden initially) */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            /* Starts slightly lower */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        /* 3. The "Visible" State (Triggered by JS) */
+        .is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 4. Attractive Card Hover Effects (The "Micro-interaction") */
+        .card {
+            transition: all 0.3s ease;
+            /* Smooth transition for hover */
+            border: none;
+            /* Cleaner look */
+            overflow: hidden;
+            /* Keeps images inside rounded corners */
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            /* Moves up slightly */
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.2);
+            /* Blue glow shadow */
+        }
+
+        /* 5. Button Hover Pulse */
+        .btn {
+            transition: transform 0.2s;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+            /* Click effect */
+        }
+
+        /* 6. Image Hover Zoom (For your project screenshots) */
+        .screenshot-frame img,
+        .img-placeholder img {
+            transition: transform 0.5s ease;
+        }
+
+        .screenshot-frame:hover img,
+        .img-placeholder:hover img {
+            transform: scale(1.03);
+            /* Subtle zoom on hover */
+        }
+
+        /* It should look like this (Clean Version) */
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .module-header {
+            background: #343a40;
+            color: white;
+            padding: 40px 0;
+        }
+
+        .screenshot-frame {
+            border: 1px solid #ddd;
+            padding: 10px;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .module-header {
+            background: #343a40;
+            color: white;
+            padding: 40px 0;
+        }
+
+        .screenshot-frame {
+            border: 1px solid #ddd;
+            padding: 10px;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="module-header text-center">
+        <h1><i class="fas fa-user-shield"></i> Admin Module</h1>
+        <p>System Management & User Oversight</p>
+        <a href="smarthire.html" class="btn btn-outline-light btn-sm mt-2">Back to Project Overview</a>
+    </header>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12 mb-5">
+                <h3 class="border-bottom pb-2">Admin Dashboard</h3>
+                <p>Overview of total active jobs, registered candidates, and verified companies.</p>
+
+                <div class="screenshot-frame">
+                    <img src="admin-dashboard.jpg" alt="Admin Dashboard Interface" class="img-fluid"
+                        style="width:100%;">
+                </div>
+            </div>
+
+            <div class="col-md-12 mb-5">
+                <h3 class="border-bottom pb-2">User Management</h3>
+                <p>Interface to approve or ban users and manage role permissions.</p>
+
+                <div class="screenshot-frame">
+                    <img src="admin-users.jpg" alt="User Management Interface" class="img-fluid" style="width:100%;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 1. Setup the "Observer" (The Camera Director)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the item is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Stop watching once animated
+                }
+            });
+        }, observerOptions);
+
+        // 2. Select elements to animate
+        document.addEventListener("DOMContentLoaded", function () {
+            // We target cards, headers, titles, and images
+            const elements = document.querySelectorAll('.card, .hero, .project-header, .module-header, .section-title, .screenshot-frame, img, h1, h2, h3');
+
+            elements.forEach((el, index) => {
+                el.classList.add('animate-on-scroll');
+
+                // Add a tiny delay for items in the same row (stagger effect)
+                if (index % 3 === 0) el.style.transitionDelay = "0ms";
+                if (index % 3 === 1) el.style.transitionDelay = "200ms"; // 2nd item waits
+                if (index % 3 === 2) el.style.transitionDelay = "400ms"; // 3rd item waits
+
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+
+</html>
